@@ -3,9 +3,14 @@ This game is written in Python using the PyGame module. It is dedicated to the U
 
 
 For the game you need: 
+
 Python 3 
-PyGame module  
 
+pygame_sdl2 module  
 
+This game are tested in Windows, Linux and Android.
 
-Management occurs with the space bar or the left mouse button.  Have a nice game ... and sorry for my English - I used machine translation
+Management occurs with the space bar or the left mouse button.  
+
+Have a nice game ... and sorry for my English - I used machine translation
+
