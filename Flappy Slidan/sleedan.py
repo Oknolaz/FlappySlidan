@@ -1,8 +1,5 @@
 '''
-Flappy Slidan 1.0.3 for Android
-Features:
-	Исправлен хитбокс пальца.
-	Добавлен новый персонаж!
+Flappy Slidan 1.0.5
 
 
 
