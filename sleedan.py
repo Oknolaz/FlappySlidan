@@ -1,10 +1,11 @@
 '''
-Flappy Slidan 1.0.5
+Flappy Slidan 1.0.8
 
 
 
 by Oknogames
 '''
+__version__= "1.0.8-dev"
 import pygame_sdl2
 pygame_sdl2.import_as_pygame()
 
@@ -29,10 +30,10 @@ import pygame
 from pygame.locals import *
 from pygame.render import *
 
-FPS = 38
+FPS = 35
 SCREENWIDTH = 288 * 2
-SCREENHEIGHT = 620 * 2
-PIPEGAPSIZE = 120 * 2  # Отвечает за пространство между пипками (Больше значение - больше промежуток)
+SCREENHEIGHT = 500 * 2
+PIPEGAPSIZE = 125 * 2  # Отвечает за пространство между пипками (Больше значение - больше промежуток)
 BASEY = SCREENHEIGHT * 0.79
 # Картинки, звуки, хитбоксы
 IMAGES, SOUNDS, HITMASKS = {}, {}, {}
@@ -116,20 +117,14 @@ def main():
     # Спрайт земли
     IMAGES['base'] = pygame.image.load('assets/sprites/mine.png').convert_alpha()
 
-    # звуки (раскомментировать строку ниже, убрать .ogg в путях к файлам и добавить переменную soundExt в случае возникновения ошибок)
-    '''
-    if 'win' in sys.platform:
-        soundExt = '.wav'
-    else:
-        soundExt = '.ogg'
-'''
+    # звуки
     SOUNDS['die'] = pygame.mixer.Sound('assets/audio/smert.ogg')
     SOUNDS['hit'] = pygame.mixer.Sound('assets/audio/neudacha.ogg')
-    SOUNDS['point'] = pygame.mixer.Sound('assets/audio/pisyn.ogg')
+    SOUNDS['point'] = pygame.mixer.Sound('assets/audio/ochko.ogg')
     SOUNDS['swoosh'] = pygame.mixer.Sound('assets/audio/pisyn.ogg')
     SOUNDS['wing'] = pygame.mixer.Sound('assets/audio/puk.ogg')
-    #SOUNDS['unitaz'] = pygame.mixer.Sound('assets/audio/unitaz.ogg')
-
+    SOUNDS['unitaz'] = pygame.mixer.Sound('assets/audio/unitaz.ogg')
+    SOUNDS['slidan'] = pygame.mixer.Sound('assets/audio/slidan.ogg')	
 
     while True:
         # рандомные фоны
@@ -168,13 +163,11 @@ def main():
         crashInfo = mainGame(movementInfo)
         showGameOverScreen(crashInfo)
 
-
 def showWelcomeAnimation():
-    """показывает начальный экран flappy slidan'а"""
+    #показывает начальный экран flappy slidan'a
     # индекс игрока
     playerIndex = 0
     playerIndexGen = cycle([0, 1, 2, 1])
-    # я сам не понял о чём здесь написал
     loopIter = 0
 
     playerx = int(SCREENWIDTH * 0.2)
@@ -188,8 +181,8 @@ def showWelcomeAnimation():
     basex = 0
     # движение земли по экрану
     baseShift = IMAGES['base'].get_width() - IMAGES['background'].get_width()
-
-    # Shm игрока для вверх-вниз на начальном экране
+    SOUNDS['slidan'].play()
+    
     playerShmVals = {'val': 0, 'dir': 1}
 
     while True:
@@ -344,8 +337,7 @@ def mainGame(movementInfo):
         SCREEN_blit(IMAGES['base'], (basex, BASEY))
         # показывет очки
         showScore(score)
-       # if score ==	1000:
-        #	SCREEN_blit(IMAGES['win'], (winx, winy))
+       
         
         visibleRot = playerRotThr
         if playerRot <= playerRotThr:
@@ -525,7 +517,7 @@ def getHitmask(image):
     return mask
 
 
+
 if __name__ == '__main__':
     main()
-while True:
-	SOUNDS['unitaz'].play()
+
