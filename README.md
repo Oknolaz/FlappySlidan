@@ -5,7 +5,7 @@
 
 
 
-This game is written in Python using the PyGame module. It is dedicated to the Ukrainian youtuber Slidan.
+This game is written in Python using the Pygame_sdl2 module. It is dedicated to the Ukrainian youtuber Slidan.
 
 For the game you need: 
 Python 3 and pygame_sdl2 module (installation instruction: https://github.com/renpy/pygame_sdl2)
